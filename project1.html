@@ -18,7 +18,62 @@
            
         </style>
         <script>
+            var  p3, tr, wp3;
 
+            p3= 105.95
+            tr= 8.75
+            function ip(){
+                document.getElementById ("s3").innerHTML = "Price: $" + p3;
+            }
+            function op () {
+                var q2,op1,op2,C_ST,tax,S,total,D;
+
+                q2= parseFloat (document.getElementById("q2").value);
+
+                op1= document.getElementById("op1");
+
+                C_ST = p3 * q2;
+                tax= C_ST* .0875;
+                if (C_ST<200){
+                    S=20;
+                }else if (C_ST>200 && C_ST<300){
+                    S=10;
+                }else {
+                    S=0;
+                }
+                if (C_ST > 200 ){
+                    D= -25;
+                }else {
+                    D= 0
+                }
+
+                total = C_ST + tax + S + D;
+                op1.innerHTML+= "Customer info:" + "<br>";
+                op1.innerHTML+="Subtotal: $" + C_ST + "<br>" ;
+                op1.innerHTML+= "Tax: $ " + tax + "<br>" ;
+                op1.innerHTML+= "Shipping: $" + S + "<br>" ;
+                op1.innerHTML+= "Discount: $" + D + "<br>";
+                op1.innerHTML+= "______________________________<br>";
+                op1.innerHTML+= "Total: $" + total + "<br>";
+                
+            }
+            function CI() {
+            var op2, TIS, q2, wp3, P;
+            op2= document.getElementById("op2");
+            q2= parseFloat (document.getElementById("q2"));
+            C_ST = p3 * q2;
+            wp3= 85.00
+            Cumpany_ST = wp3 * q2;
+            P= (C_ST-Cumpany_ST);
+            op2.innerHTML+="-----------------------<br>Company info:";
+            op2.innerHTML+="<br>Total Items Sold: "+TIS;
+            op2.innerHTML+="<br>Customer Subtotal: $"+C_ST;
+            op2.innerHTML+="<br>Company Subtotal: $"+Cumpany_ST;
+            op2.innerHTML+="<br>Profit: $" +P;
+
+            }
+            console.log(CI)
+            
 
         </script>
     </head>
@@ -44,7 +99,7 @@
             
             <h2> White Leader Couch</h2>
             <img src="couch.jpg"><br>
-            <span> 
+            <span id="s3"> 
                 $105.95 
             </span>
             <p>
@@ -55,9 +110,14 @@
             </p>
             Quantity: <input type = "text" id = "q2">
            
-          
+        </div><button onclick = "op();">
+                Cart
+            </button>
+            <div id="op1"></div>
+            <div id="op2"></div>
 
-        </div>
+            
+
         
     </body>
 </html>

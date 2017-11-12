@@ -18,6 +18,47 @@
          
         </style>
         <script>
+            var p1, p2,tr, wp1 ;
+            p1= 25.95
+            p2= 20.00
+            wp1= 15.00
+            tr= 8.75
+            function ip(){
+                document.getElementById ("s1").innerHTML = "Price: $" + p1;
+                document.getElementById ("s2").innerHTML = "Price: $" + p2;
+            }
+            function op () {
+                var q1,q2,op1,op2,C_ST,tax,S,total,TIS,D;
+                q1= parseFloat (document.getElementById("q1").value);
+                q3= parseFloat (document.getElementById("q3").value);
+                op1= document.getElementById("op1");
+
+                C_ST= (p1 * q1) + (p2 * q3);
+                tax= C_ST* .0875;
+                TIS= q1+q2;
+                if (C_ST<54){
+                    S=10;
+                }else if (C_ST>55 && C_ST<99){
+                    S=5;
+                }else {
+                    S=0;
+                }
+                if (C_ST > 100 ){
+                    D= -15;
+                }else {
+                    D= 0
+                }
+
+                total = C_ST + tax + S + D;
+                op1.innerHTML+= "Customer info:" + "<br>";
+                op1.innerHTML+="Subtotal: $" + C_ST + "<br>" ;
+                op1.innerHTML+= "Tax: $ " + tax + "<br>" ;
+                op1.innerHTML+= "Shipping: $" + S + "<br>" ;
+                op1.innerHTML+= "Discount: $" + D + "<br>";
+                op1.innerHTML+= "______________________________<br>";
+                op1.innerHTML+= "Total: $" + total + "<br>";
+            }
+         
             
        
 
@@ -46,7 +87,7 @@
         <div>
             <h2>Roman Numeral Clock</h2>
             <img src="clock.jpg"><br>
-            <span> 
+            <span id="s1"> 
                 $25.95
             </span>
             <p>
@@ -56,7 +97,7 @@
           
             <h2> Cherry Blossom Tree Lamp</h2>
             <img src="lamp.jpg"><br>
-            <span> 
+            <span id="s2"> 
                 $20.00 
             </span>
             <p>
@@ -66,9 +107,13 @@
                
             </p>
             Quantity: <input type = "text" id = "q3"> 
-          
-
+        
         </div>
+    </div>
+    <button onclick = "op();">
+            Cart
+        </button>
+        <div id="op1"></div>
         
     </body>
 </html>
